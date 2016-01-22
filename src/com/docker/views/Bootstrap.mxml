@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<view:BootstrapClass xmlns:mx="http://www.adobe.com/2006/mxml"
+	 xmlns:view="com.docker.views.*" 
+	 width="100%" height="100%" preinitialize="setupApp()" creationComplete="start()">
+	
+	<!--initialize="startDevices()"--> 
+	 <mx:VBox width="100%" height="100%">
+		<mx:HBox width="100%" height="45">
+			<mx:ApplicationControlBar width="100%" height="100%" >
+				<mx:Label text="Flex视频测试" fontSize="14" fontWeight="bold"/>
+			</mx:ApplicationControlBar>
+		</mx:HBox>
+		
+		<mx:HBox width="100%" height="100%" styleName="flowStack">
+			<mx:HDividedBox width="100%" height="100%">
+				<view:UserPod width="200" height="100%" />
+				<view:ChatPod width="80%" height="100%"/>
+				<view:MonitorPod width="340" height="100%"/>
+			</mx:HDividedBox>
+		</mx:HBox>
+	 </mx:VBox>
+	 
+</view:BootstrapClass>

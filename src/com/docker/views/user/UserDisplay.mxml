@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<view:UserDisplayClass xmlns:mx="http://www.adobe.com/2006/mxml"
+			 			  xmlns:util="com.docker.ui.*"
+			  			  xmlns:view="com.docker.views.user.*">
+			  			  
+	<mx:DataGrid id="applist" width="100%" height="100%">
+		<mx:columns>
+			<mx:DataGridColumn headerText="姓名" dataField="name"/>
+			<mx:DataGridColumn headerText="用户名" dataField="clients"/>
+		</mx:columns>
+	</mx:DataGrid>
+	
+</view:UserDisplayClass>
