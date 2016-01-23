@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" 
+			   xmlns:control="com.docker.control.*"
+			   xmlns:business="com.docker.business.*"
+			   xmlns:view="com.docker.views.*" 
+			   initialize="init()"
+			   >
+	
+	<fx:Style >
+		.flowStack {
+			border-style			:	solid;
+			border-color			:	#cccccc;
+			border-alpha			: 	1;
+			border-thickness		: 	1;
+			corner-radius			:	5;
+			background-color		:	#eeeeee;
+		}
+	</fx:Style>
+	<fx:Script>
+		<![CDATA[
+			
+			[Bindable]
+			private var applicationImg:Class;
+			
+			[Bindable]
+			[Embed('images/user.png')] 
+			private var userImg:Class;  
+			
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+		<!-- the ServiceLocator where we specify the remote services
+		<business:Services/>-->
+		<control:DashboardController/>
+	</fx:Declarations>
+	
+	
+	<view:Bootstrap/>
+	
+</s:Application>

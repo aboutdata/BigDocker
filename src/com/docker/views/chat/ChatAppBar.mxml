@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<view:ChatAppBarClass xmlns:mx="http://www.adobe.com/2006/mxml"
+					 xmlns:view="com.docker.views.chat.*">
+					
+	<mx:Image source="{ chatBarImg }"/>
+		
+	<mx:VBox paddingTop="3">
+		<mx:Label text="聊天记录" fontWeight="bold" fontSize="12"/>
+	</mx:VBox>
+	
+</view:ChatAppBarClass>

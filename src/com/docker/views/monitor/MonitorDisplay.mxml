@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<view:MonitorDisplayClass xmlns:mx="http://www.adobe.com/2006/mxml"
+			 			  xmlns:util="com.docker.ui.*"
+			  			  xmlns:view="com.docker.views.monitor.*">
+	<mx:Button label="增加" click="add()">
+		
+	</mx:Button>  
+	<!-- view -->
+	<mx:Box width="320" height="240" 
+		backgroundColor="0xFFFFFF" 
+		borderStyle="solid" borderColor="0xD0D0D0"
+	 	paddingBottom="0" cornerRadius="2">
+		<util:VideoContainer height="100%" width="100%"/>
+	</mx:Box>
+	
+	<mx:Box width="320" height="240"
+		backgroundColor="0xFFFFFF" 
+		borderStyle="solid" borderColor="0xD0D0D0"
+	 	paddingBottom="0" cornerRadius="2">
+		<util:VideoContainer height="100%" width="100%"/>
+	</mx:Box>
+	
+	<!--mx:Box width="320" height="240"
+		backgroundColor="0xFFFFFF" 
+		borderStyle="solid" borderColor="0xD0D0D0"
+	 	paddingBottom="0" cornerRadius="2" backgroundImage="{ videoImg }">
+		<util:VideoContainer height="100%" width="100%"/>
+	</mx:Box-->
+	
+</view:MonitorDisplayClass>

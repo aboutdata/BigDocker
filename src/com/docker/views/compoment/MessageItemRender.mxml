@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" creationComplete="create()" paddingBottom="2" paddingLeft="4" paddingTop="2" paddingRight="2" verticalGap="0" xmlns:component="component.*">
+
+	<mx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			import mx.collections.ArrayCollection;
+			import mx.events.FlexEvent;
+			import mx.controls.Image;
+			import mx.controls.Text;
+
+			import com.docker.vo.*;
+			
+			[Bindable]
+			public var message:Message=new Message();
+
+			//type: 1,text        2,img          3,webimage
+			private var sendTxtArr:Array=[];
+
+			private function create():void
+			{
+				if (message == null)
+				{
+					return ;
+				}
+
+				parserSendTxt()
+			}
+
+			private function parserSendTxt():void
+			{
+				var time:Date=message.time
+				//var timeStr:String=time.getFullYear().toString() + "-" + (time.getMonth() + 1).toString() + "-" + time.getDate().toString() + " " + time.getHours().toString() + ":" + time.getMinutes().toString() + ":" + time.getSeconds().toString();
+				var timeStr:String=dateFormatter.format(time);
+				var isprivatetalk:Boolean=message.isprivatetalk;
+				var nickname:String=message.nickname;
+				var msg:String=message.msg;
+				var acceptnickname:String=message.acceptnickname;
+
+				var fullMsg:String="";
+
+				//私人对话
+				if (isprivatetalk)
+				{
+					fullMsg=fullMsg + "[私人对话]";
+				}
+
+				fullMsg=fullMsg + " " + nickname + " ";
+
+				if (acceptnickname != "")
+				{
+					fullMsg=fullMsg + "对" + " " + acceptnickname + " ";
+				}
+
+				fullMsg=fullMsg + timeStr;
+
+				txt1.text=fullMsg;
+
+				//sendTxtArr.push({label:message.msg , type:'1'});
+				splitString(msg);
+
+				queueShow()
+			}
+
+			private static var dividerStr:String="[img:";
+
+			private function splitString(txt:String):void
+			{
+				var a1:Array=txt.split(dividerStr);
+
+				for(var i:int=0; i < a1.length; i++)
+				{
+					if (i == 0)
+					{
+						sendTxtArr.push({label:a1[i], type:'1'});
+					}
+					else
+					{
+						var s1:String=a1[i].toString()
+						if (s1.indexOf(']') != -1)
+						{
+							var s2:String=s1.substring(0, s1.indexOf(']'));
+							if (!isNaN(Number(s2)))
+							{
+								//is number , is face number ;
+								//if (TxtManager.getInstance().faceArr[Number(s2)] != undefined)
+								if (Number(s2) < 135)
+									//注意:本系统图片是从0到134
+								{
+									//sendTxtArr.push({label:TxtManager.getInstance().faceArr[Number(s2)], type:'2'});
+									sendTxtArr.push({label:"img/Face/" + Number(s2).toString() + ".swf", type:'2'});
+
+									var s3:String=s1.substring(s1.indexOf(']') + 1, s1.length);
+									sendTxtArr.push({label:s3, type:'1'});
+								}
+								else
+								{
+									sendTxtArr.push({label:dividerStr + s1, type:'1'});
+								}
+							}
+							else
+							{
+								if (s2.substring(0, 7) == 'http://')
+								{
+									//insert image
+									sendTxtArr.push({label:s2, type:'3'});
+
+									s3=s1.substring(s1.indexOf(']') + 1, s1.length);
+									sendTxtArr.push({label:s3, type:'1'});
+								}
+								else
+								{
+									sendTxtArr.push({label:dividerStr + s1, type:'1'});
+								}
+							}
+						}
+						else
+						{
+							sendTxtArr.push({label:dividerStr + s1, type:'1'});
+						}
+					}
+				}
+			}
+
+			private var currentIndex:Number=-1;
+
+			private function queueShow():void
+			{
+				createChildQueue()
+			}
+
+			private function createChildQueue():void
+			{
+				++currentIndex;
+				if (sendTxtArr[currentIndex] != undefined)
+				{
+					if (Object(sendTxtArr[currentIndex]).type == '1')
+					{
+						content.addTxt(Object(sendTxtArr[currentIndex]).label)
+					}
+					else if (Object(sendTxtArr[currentIndex]).type == '2')
+					{
+						content.addImg(Object(sendTxtArr[currentIndex]).label)
+					}
+					else if (Object(sendTxtArr[currentIndex]).type == '3')
+					{
+						content.addWebImg(Object(sendTxtArr[currentIndex]).label)
+					}
+				}
+			}
+		]]>
+	</mx:Script>
+
+	<mx:DateFormatter id="dateFormatter" formatString="YYYYMMDD JJ:NN:SS">
+
+	</mx:DateFormatter>
+
+	<mx:HBox verticalAlign="middle" horizontalGap="1">
+		<mx:Text id="txt1" color="#0824F5"/>
+	</mx:HBox>
+
+	<component:MySendTxtBox id="content" width="100%" ChildCreateComplete="createChildQueue()" bold='{message.fontWeight}' italic="{message.fontStyle}" underline="{message.fontTextDecoration}" color="{message.fontColor}" creationComplete="{content.forceWidth = content.width }"/>
+</mx:VBox>

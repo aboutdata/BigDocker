@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<view:MonitorAppBarClass xmlns:mx="http://www.adobe.com/2006/mxml"
+					 xmlns:view="com.docker.views.monitor.*">
+					
+	<mx:Image source="{ monitorBarImg }"/>
+		
+	<mx:VBox paddingTop="3">
+		<mx:Label text="视频会话" fontWeight="bold" fontSize="12"/>
+	</mx:VBox>
+	
+</view:MonitorAppBarClass>
+

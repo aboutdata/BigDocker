@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<view:ChatPodClass xmlns:mx="http://www.adobe.com/2006/mxml"
+				  xmlns:view="com.docker.views.*"
+				  xmlns:chat="com.docker.views.chat.*">
+				  
+	<chat:ChatAppBar width="100%" paddingTop="5" paddingBottom="0"
+				   dock="true"/>
+		  
+	<chat:ChatDisplay width="100%" height="100%"/>
+	
+	<chat:ChatInput width="100%" height="80"/>
+		
+	<chat:ChatControlBar width="100%" height="30" dock="true"
+					   paddingTop="-2" paddingBottom="0"/>		  
+</view:ChatPodClass>

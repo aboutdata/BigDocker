@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<view:ChatDisplayClass xmlns:mx="http://www.adobe.com/2006/mxml"
+			 			  xmlns:util="com.docker.ui.*"
+			  			  xmlns:view="com.docker.views.chat.*">
+	<mx:Box>
+		<mx:TextArea id="status_txt" updateComplete="updateScroll()"
+					 borderColor="0xD0D0D0"
+					 width="100%" height="100%" borderStyle="solid"  
+					 textIndent="6" fontSize="12" focusEnabled="false"
+					 editable="false" htmlText="{ chat.messageText }"/>
+	</mx:Box>		  			  
+			  			  
+</view:ChatDisplayClass>
