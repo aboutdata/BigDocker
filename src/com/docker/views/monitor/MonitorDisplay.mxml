@@ -4,48 +4,26 @@
 						  xmlns:mx="library://ns.adobe.com/flex/mx" 
 			 			  xmlns:util="com.docker.ui.*"
 			  			  xmlns:view="com.docker.views.monitor.*">
-		
-		<s:Scroller id="videoScroller">
-			<s:VGroup id="myGroup" width="100%" height="100%">
-				<s:HGroup width="100%" height="100%">
-					<s:Group width="160" height="120" click="changeVideo(1)">
-						<s:Rect width="100%" height="100%">
-							<s:fill>
-								<s:LinearGradient>
-									<s:GradientEntry color="0x000000"/>
-								</s:LinearGradient>
-							</s:fill>
- 						</s:Rect>
-						<util:VideoContainer height="100%" width="100%" video="{ main.media.videoRemote }"/>
-					</s:Group>
-					
-					<s:Group width="160" height="120" click="changeVideo(2)">
-						<s:Rect width="100%" height="100%">
-							<s:fill>
-								<s:LinearGradient>
-									<s:GradientEntry color="0x000000"/>
-								</s:LinearGradient>
-							</s:fill>
-						</s:Rect>
-						<util:VideoContainer height="100%" width="100%" video="{ main.media.videoRemote1 }"/>
-					</s:Group>
-				</s:HGroup>
-				
-				<s:HGroup width="100%" height="100%">
-					<s:Group width="160" height="120" click="changeVideo(3)">
-						<s:Rect width="100%" height="100%">
-							<s:fill>
-								<s:LinearGradient>
-									<s:GradientEntry color="0x000000"/>
-								</s:LinearGradient>
-							</s:fill>
-						</s:Rect>
-						<util:VideoContainer height="100%" width="100%" video="{ main.media.videoRemote2 }"/>
-					</s:Group>
-				</s:HGroup>
-				
-			</s:VGroup>
-		</s:Scroller>
-			
+	<!-- view -->
+	<mx:Box width="200" height="140"  
+			backgroundColor="0xFFFFFF" 
+			borderStyle="solid" borderColor="0xD0D0D0"
+			paddingBottom="0" cornerRadius="2" click="changeVideo(1)">
+		<util:VideoContainer height="100%" width="100%" video="{ main.media.videoRemote }"/>
+	</mx:Box>
+	
+	<mx:Box width="200" height="140"
+			backgroundColor="0xFFFFFF" 
+			borderStyle="solid" borderColor="0xD0D0D0"
+			paddingBottom="0" cornerRadius="2" click="changeVideo(2)">
+		<util:VideoContainer height="100%" width="100%" video="{ main.media.videoRemote1 }"/>
+	</mx:Box>
+	
+	<mx:Box width="200" height="140"
+			backgroundColor="0xFFFFFF" 
+			borderStyle="solid" borderColor="0xD0D0D0"
+			paddingBottom="0" cornerRadius="2"  click="changeVideo(3)">
+			<util:VideoContainer height="100%" width="100%" video="{ main.media.videoRemote2 }"/>
+	</mx:Box>
 	
 </view:MonitorDisplayClass>

@@ -39,7 +39,8 @@ package com.docker.command
 	    { 
 	    	var event : StopStreamEvent = StopStreamEvent( cgEvent );
 	    	// Use Delegate to close NetStream.
-	      	netStreamDelegate.stopPlayback();
+			var videoIndex : int = event.videoIndex;
+	      	netStreamDelegate.stopPlayback(videoIndex);
 		}
 	}
 }

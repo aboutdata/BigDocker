@@ -54,7 +54,7 @@ package com.docker.views.user
 						var playStreamEvent : PlayStreamEvent = 
 							new PlayStreamEvent( bufferTime, playback_streamName,true,true,videoIndex);
 						//把视频对应的的用户id存起来,用于切换主画面的视频
-						main.videoPairs["vid_"+videoIndex]= users[i]['id'];
+						main.videoPairs[""+videoIndex]= users[i]['id'];
 						playStreamEvent.dispatch();
 					}
 					videoIndex++;

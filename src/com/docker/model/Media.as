@@ -18,7 +18,14 @@ package com.docker.model
 		/**
 		* <code>NetStream</code> for incoming audio/video.
 		*/
-		//public var nsPlay : NetStream;
+		public var nsPlay : NetStream;
+		
+		public var nsPlay1 : NetStream;
+		
+		public var nsPlay2 : NetStream;
+		
+		public var nsPlay3 : NetStream;
+		
 	
 		/**
 		* One <code>NetConnection</code> used in the application.

@@ -10,12 +10,15 @@ package com.docker.events
 	 */	
 	public class StopStreamEvent extends CairngormEvent 
 	{		
+		
+		public var videoIndex : int;
 		/**
 		 * 
 		 */		
-		public function StopStreamEvent() 
+		public function StopStreamEvent( videoIndex : int) 
 		{
 			super( DashboardController.EVENT_STOP_STREAM );
+			this.videoIndex =videoIndex;
 		}
 	}
 }

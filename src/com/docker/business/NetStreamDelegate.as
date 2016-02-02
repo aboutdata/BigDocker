@@ -34,20 +34,8 @@ package com.docker.business
 		/**
 		* 
 		*/		
-		private var service : Object;
-		
-
-		/**
-		* 
-		*/		
 		public var main : Main = model.main;
-		
-		/**
-	 	* 
-	 	*/	 	
-	 	private var images : Images = main.images;
-	 	
-				
+			
 		/**
 		*  
 		*/		
@@ -56,7 +44,11 @@ package com.docker.business
 		/**
 		*  
 		*/		
-//		private var nsPlay : NetStream = main.media.nsPlay;
+		private var nsPlay : NetStream = main.media.nsPlay;
+		
+		private var nsPlay1 : NetStream = main.media.nsPlay1;
+		private var nsPlay2 : NetStream = main.media.nsPlay2;
+		private var nsPlay3 : NetStream = main.media.nsPlay3;
 		
 		/**
 		*  
@@ -73,6 +65,9 @@ package com.docker.business
 	 	* 
 	 	*/	 	
 	 	private var logger : Logger = model.logger;
+		
+
+		public var chat : Chat = model.chat;
 		/**
 		 * 
 		 * @param res
@@ -97,45 +92,47 @@ package com.docker.business
 									   videoIndex : int ) : void
 		{
 			try 
-			{
-				// Setup NetStream for playback.
-				var nsPlay : NetStream= new NetStream( main.media.nc );
-			
-				nsPlay.addEventListener( NetStatusEvent.NET_STATUS, netStatusEvent );
-				nsPlay.addEventListener( IOErrorEvent.IO_ERROR, netIOError );
-				nsPlay.addEventListener( AsyncErrorEvent.ASYNC_ERROR, netASyncError );
-				
-				nsPlay.bufferTime = bufferTime;
-				nsPlay.receiveAudio( audio );
-				nsPlay.receiveVideo( video );
-				
-				nsPlay.client = responder;
-				
-				switch(videoIndex){
+			{	switch(videoIndex){
 					case 1 :
+						nsPlay1= new NetStream( main.media.nc );
+						
+						nsPlay1.bufferTime = bufferTime;
+						nsPlay1.receiveAudio( audio );
+						nsPlay1.receiveVideo( video );
+						//nsPlay1.client = responder;
 						main.media.videoRemote = new Video( 320,240 );
-						main.media.videoRemote.attachNetStream( nsPlay );
+						main.media.videoRemote.attachNetStream( nsPlay1 );
+						nsPlay1.play( streamName );
 						break;
 					case 2 :
+						nsPlay2 = new NetStream( main.media.nc );
+						
+						nsPlay2.bufferTime = bufferTime;
+						nsPlay2.receiveAudio( audio );
+						nsPlay2.receiveVideo( video );
+						//nsPlay2.client = responder;
 						main.media.videoRemote1 = new Video( 320,240 );
-						main.media.videoRemote1.attachNetStream( nsPlay );
+						main.media.videoRemote1.attachNetStream( nsPlay2 );
+						nsPlay2.play( streamName );
 						break;
 					case 3 :
+						nsPlay3 = new NetStream( main.media.nc );
+						
+						nsPlay3.bufferTime = bufferTime;
+						nsPlay3.receiveAudio( audio );
+						nsPlay3.receiveVideo( video );
+						//nsPlay3.client = responder;
 						main.media.videoRemote2 = new Video( 320,240 );
-						main.media.videoRemote2.attachNetStream( nsPlay );
+						main.media.videoRemote2.attachNetStream( nsPlay3 );
+						nsPlay3.play( streamName );
 						break;
 				}
-				nsPlay.play( streamName );
 				
 			}
 			catch( e : ArgumentError ) 
 			{
-				//
-				//main.playbackState = main.stopState;
-				// Invalid parameters
 				switch ( e.errorID ) 
 				{
-					// NetStream object must be connected.
 					case 2126 :
 						//
 						break;
@@ -153,7 +150,7 @@ package com.docker.business
 		{
 			try 
 			{
-				var nsPlay : NetStream= new NetStream( main.media.nc );
+				nsPlay = new NetStream( main.media.nc );
 				
 				nsPlay.addEventListener( NetStatusEvent.NET_STATUS, netStatusEvent );
 				nsPlay.addEventListener( IOErrorEvent.IO_ERROR, netIOError );
@@ -165,7 +162,7 @@ package com.docker.business
 				
 				nsPlay.client = responder;
 				
-				main.media.videoMain = new Video( 320,240 );
+				main.media.videoMain = new Video( 640,480 );
 				main.media.videoMain.attachNetStream( nsPlay );
 				
 				nsPlay.play( streamName );
@@ -192,15 +189,21 @@ package com.docker.business
 		/**
 		 * 
 		 */		
-		public function stopPlayback() : void
+		public function stopPlayback( videoIndex : int ) : void
 		{
-//			if ( nsPlay != null ) 
-//			{
-//				//
-//				//main.playbackState = false;
-//				// Close the NetStream.
-//				nsPlay.close();
-//			}
+			chat.sendMessage("关闭流信息:： "+videoIndex);
+			switch(videoIndex){
+				case 1 :
+					// Close the NetStream.
+					if ( nsPlay1 != null ) {nsPlay1.close();}
+				case 2 :
+					if ( nsPlay2 != null ) {nsPlay2.close();}
+				case 3 :
+					if ( nsPlay3 != null ) {nsPlay3.close();}
+				default :
+					break;
+			}
+//			
 		}
 		
 		

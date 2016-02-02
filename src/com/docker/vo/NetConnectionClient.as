@@ -46,7 +46,7 @@ package com.docker.vo
 			chat.sendMessage("播放远程视频流媒体..");
 			var playback_streamName : String = "stream_consult_"+id;
 			//把视频对应的的用户id存起来,用于切换主画面的视频 
-			main.videoPairs["vid_"+(users.length-1)]= id;
+			main.videoPairs[""+(users.length-1)]= id;
 			//判断需要连接成功 才执行获取流媒体操作 fixed
 			if ( main.netConnected ) 
 			{
@@ -72,13 +72,31 @@ package com.docker.vo
 				if(main.roomUsers[i]["id"] != id){
 					users.push({id:main.roomUsers[i]["id"], name:main.roomUsers[i]["name"], room:main.roomUsers[i]["room"]});
 				}else{
-					//该用户离开房间 则不加如用户列表				
+					//该用户离开房间 则不加入用户列表				
 				}
 			}
 			main.roomUsers = users;
 			
-			//TODO ...停止播放改用户的流数据
+			//删除保存 视频对应关系的值
+			var obj:Object=  main.videoPairs;
+			//使用for..in...遍历所有的key - value
+			for(var key:String in obj) {
+				chat.sendMessage("循环存储视频编号的key "+key);
+				if(obj[key]==id){
+					//获取改视频的id
+					var index:int = Number(String);
+					chat.sendMessage("StopStreamEvent ...  "+index);
+					var	stopStreamEvent:StopStreamEvent = new StopStreamEvent(index);
+					stopStreamEvent.dispatch();
+					
+					delete obj[key];
+				}
+			}
+
+			//TODO ...停止播放该用户的流数据
 			
+			
+			//
 		}
 		
 		

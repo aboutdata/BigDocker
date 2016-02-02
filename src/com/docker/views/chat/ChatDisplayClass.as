@@ -1,11 +1,11 @@
 package com.docker.views.chat
 {
-	import mx.containers.ViewStack;
+	import mx.containers.Box;
 	import mx.controls.TextArea;
 	
 	import com.docker.model.*;
 	
-	public class ChatDisplayClass extends ViewStack
+	public class ChatDisplayClass extends Box
 	{
 		/**
 		* 
