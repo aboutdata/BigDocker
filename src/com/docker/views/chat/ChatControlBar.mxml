@@ -2,6 +2,7 @@
 <view:ChatControlBarClass xmlns:mx="http://www.adobe.com/2006/mxml"
 				   		xmlns:view="com.docker.views.chat.*">
 		
+	
 	<mx:Box direction="horizontal" width="100%" height="100%" paddingLeft="5"
 			horizontalGap="4" horizontalAlign="left" paddingBottom="0" paddingTop="5"
 			verticalAlign="middle">	

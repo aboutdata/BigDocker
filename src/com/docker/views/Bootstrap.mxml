@@ -13,9 +13,9 @@
 		
 		<mx:HBox width="100%" height="100%" styleName="flowStack">
 			<mx:HDividedBox width="100%" height="100%">
-				<view:UserPod width="200" height="100%" />
+				<view:UserPod width="200" height="100%"/>
 				<view:ChatPod width="80%" height="100%"/>
-				<view:MonitorPod width="340" height="100%"/>
+				<view:MonitorPod width="340" height="100%" main="{ main }"/>
 			</mx:HDividedBox>
 		</mx:HBox>
 	 </mx:VBox>

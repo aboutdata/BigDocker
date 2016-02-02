@@ -21,12 +21,13 @@ package com.docker.views.chat
 		[Bindable]		
 		public var main : Main = model.main;
 		
+		
+		
 		public function send():void
 		{
 			chat.sendMessage(main.sendText);
 			main.sendText="";
 			
 		}
-
 	}
 }

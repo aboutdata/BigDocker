@@ -8,5 +8,7 @@
 				   dock="true"/>
 		  
 	<user:UserDisplay width="100%" height="100%"/>			  
-				  
+				 
+
+	
 </view:UserPodClass>

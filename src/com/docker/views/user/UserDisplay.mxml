@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<view:UserDisplayClass xmlns:mx="http://www.adobe.com/2006/mxml"
+<view:UserDisplayClass xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					   xmlns:s="library://ns.adobe.com/flex/spark" 
+					   xmlns:mx="library://ns.adobe.com/flex/mx" 
 			 			  xmlns:util="com.docker.ui.*"
-			  			  xmlns:view="com.docker.views.user.*">
+			  			  xmlns:view="com.docker.views.user.*" preinitialize="getRoomUsers()">
 			  			  
-	<mx:DataGrid id="applist" width="100%" height="100%">
+	<mx:DataGrid id="applist" width="100%" height="100%" dataProvider="{main.roomUsers}">
 		<mx:columns>
-			<mx:DataGridColumn headerText="姓名" dataField="name"/>
-			<mx:DataGridColumn headerText="用户名" dataField="clients"/>
+			<mx:DataGridColumn headerText="唯一标识" dataField="id"/>
+			<mx:DataGridColumn headerText="用户名" dataField="name"/>
 		</mx:columns>
 	</mx:DataGrid>
 	
+	<mx:Box width="200" height="140" 
+			backgroundColor="0xFFFFFF"
+			borderStyle="solid" borderColor="0xD0D0D0"
+			paddingBottom="0" cornerRadius="5">
+		<util:VideoContainer height="100%" width="100%" video="{ main.media.videoLocal }"/>
+	</mx:Box>
 </view:UserDisplayClass>

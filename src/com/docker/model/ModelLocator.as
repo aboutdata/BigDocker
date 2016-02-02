@@ -27,6 +27,11 @@ package com.docker.model
 		public var chat : Chat;
 		
 		/**
+		 * 
+		 */		
+		public var logger : Logger;
+		
+		/**
 	   	 * @throws CairngormError Only one ModelLocator instance should be instantiated.
 	   	 */	   	
 	   	public function ModelLocator() 
@@ -58,6 +63,8 @@ package com.docker.model
 			main = new Main();
 			
 			chat = new Chat( main );
+			
+			logger = new Logger( main );
 			
 	   	}
 	   	

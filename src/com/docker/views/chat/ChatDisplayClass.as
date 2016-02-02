@@ -14,6 +14,14 @@ package com.docker.views.chat
 		
 		[Bindable]
 		/**
+		 * 
+		 */		
+		public var main : Main = model.main;
+		/**
+		
+		
+		[Bindable]
+		/**
 		* 
 		*/		
 		public var chat : Chat = model.chat;
