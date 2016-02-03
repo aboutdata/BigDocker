@@ -103,6 +103,9 @@ package com.docker.business
 						main.media.videoRemote = new Video( 320,240 );
 						main.media.videoRemote.attachNetStream( nsPlay1 );
 						nsPlay1.play( streamName );
+						
+						//播放第一个视频
+						startPlaybackMain(streamName);
 						break;
 					case 2 :
 						nsPlay2 = new NetStream( main.media.nc );
@@ -194,12 +197,18 @@ package com.docker.business
 			chat.sendMessage("关闭流信息:： "+videoIndex);
 			switch(videoIndex){
 				case 1 :
+					main.media.videoRemote=null;
 					// Close the NetStream.
 					if ( nsPlay1 != null ) {nsPlay1.close();}
+					break;
 				case 2 :
+					main.media.videoRemote1=null;
 					if ( nsPlay2 != null ) {nsPlay2.close();}
+					break;
 				case 3 :
+					main.media.videoRemote2=null;
 					if ( nsPlay3 != null ) {nsPlay3.close();}
+					break;
 				default :
 					break;
 			}

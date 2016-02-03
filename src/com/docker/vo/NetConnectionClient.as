@@ -84,7 +84,7 @@ package com.docker.vo
 				chat.sendMessage("循环存储视频编号的key "+key);
 				if(obj[key]==id){
 					//获取改视频的id
-					var index:int = Number(String);
+					var index:int = Number(key);
 					chat.sendMessage("StopStreamEvent ...  "+index);
 					var	stopStreamEvent:StopStreamEvent = new StopStreamEvent(index);
 					stopStreamEvent.dispatch();
