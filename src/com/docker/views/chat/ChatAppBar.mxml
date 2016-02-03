@@ -5,7 +5,7 @@
 	<mx:Image source="{ chatBarImg }"/>
 		
 	<mx:VBox paddingTop="3">
-		<mx:Label text="视频会话" fontWeight="bold" fontSize="12"/>
+		<mx:Label text="安好远程视频会诊" fontWeight="bold" fontSize="12"/>
 	</mx:VBox>
 	
 </view:ChatAppBarClass>

@@ -6,21 +6,21 @@
 			  			  xmlns:view="com.docker.views.monitor.*">
 	<!-- view -->
 	<mx:Box width="200" height="140"  
-			backgroundColor="0xFFFFFF" 
+			backgroundColor="0x000000" 
 			borderStyle="solid" borderColor="0xD0D0D0"
 			paddingBottom="0" cornerRadius="2" click="changeVideo(1)">
 		<util:VideoContainer height="100%" width="100%" video="{ main.media.videoRemote }"/>
 	</mx:Box>
 	
 	<mx:Box width="200" height="140"
-			backgroundColor="0xFFFFFF" 
+			backgroundColor="0x000000" 
 			borderStyle="solid" borderColor="0xD0D0D0"
 			paddingBottom="0" cornerRadius="2" click="changeVideo(2)">
 		<util:VideoContainer height="100%" width="100%" video="{ main.media.videoRemote1 }"/>
 	</mx:Box>
 	
 	<mx:Box width="200" height="140"
-			backgroundColor="0xFFFFFF" 
+			backgroundColor="0x000000" 
 			borderStyle="solid" borderColor="0xD0D0D0"
 			paddingBottom="0" cornerRadius="2"  click="changeVideo(3)">
 			<util:VideoContainer height="100%" width="100%" video="{ main.media.videoRemote2 }"/>

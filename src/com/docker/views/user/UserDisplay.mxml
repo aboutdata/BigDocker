@@ -13,7 +13,7 @@
 	</mx:DataGrid>
 	
 	<mx:Box width="200" height="140" 
-			backgroundColor="0xFFFFFF"
+			backgroundColor="0x000000"
 			borderStyle="solid" borderColor="0xD0D0D0"
 			paddingBottom="0" cornerRadius="5">
 		<util:VideoContainer height="100%" width="100%" video="{ main.media.videoLocal }"/>
