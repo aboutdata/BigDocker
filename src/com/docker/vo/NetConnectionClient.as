@@ -42,19 +42,19 @@ package com.docker.vo
 			main.roomUsers = users;
 			
 			//TODO 判断users的大小 选择远程视频 进行关联
-			var bufferTime : int = 0;
-			chat.sendMessage("播放远程视频流媒体..");
-			var playback_streamName : String = "stream_consult_"+id;
+			//var bufferTime : int = 0;
+			//chat.sendMessage("播放远程视频流媒体..");
+			//var playback_streamName : String = "stream_consult_"+id;
 			//把视频对应的的用户id存起来,用于切换主画面的视频 
-			main.videoPairs[""+(users.length-1)]= id;
+			//main.videoPairs[""+(users.length-1)]= id;
 			//判断需要连接成功 才执行获取流媒体操作 fixed
-			if ( main.netConnected ) 
-			{
-				var playStreamEvent : PlayStreamEvent = 
-					new PlayStreamEvent( bufferTime, playback_streamName,true,true,users.length-1);
-				
-				playStreamEvent.dispatch();
-			}
+			//if ( main.netConnected ) 
+			//{
+			//	var playStreamEvent : PlayStreamEvent = 
+			//		new PlayStreamEvent( bufferTime, playback_streamName,true,true,users.length-1);
+			//	
+			//	playStreamEvent.dispatch();
+			//}
 			
 		}
 		
@@ -78,20 +78,20 @@ package com.docker.vo
 			main.roomUsers = users;
 			
 			//删除保存 视频对应关系的值
-			var obj:Object=  main.videoPairs;
+			//var obj:Object=  main.videoPairs;
 			//使用for..in...遍历所有的key - value
-			for(var key:String in obj) {
-				chat.sendMessage("循环存储视频编号的key "+key);
-				if(obj[key]==id){
+			//for(var key:String in obj) {
+				//chat.sendMessage("循环存储视频编号的key "+key);
+				//if(obj[key]==id){
 					//获取改视频的id
-					var index:int = Number(key);
-					chat.sendMessage("StopStreamEvent ...  "+index);
-					var	stopStreamEvent:StopStreamEvent = new StopStreamEvent(index);
-					stopStreamEvent.dispatch();
+					//var index:int = Number(key);
+					//chat.sendMessage("StopStreamEvent ...  "+index);
+					///var	stopStreamEvent:StopStreamEvent = new StopStreamEvent(index);
+					//stopStreamEvent.dispatch();
 					
-					delete obj[key];
-				}
-			}
+					//delete obj[key];
+				//}//
+			//}
 
 			//TODO ...停止播放该用户的流数据
 			

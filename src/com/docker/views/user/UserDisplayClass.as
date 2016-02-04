@@ -39,7 +39,7 @@ package com.docker.views.user
 			//添加到全局变量
 			main.roomUsers = users;
 			//设定已经登录在线用户的摄像头信息
-			var videoIndex :int= 1;
+			/**var videoIndex :int= 1;
 			for(var i:int = 0; i < users.length; i++) {
 				if(uid === users[i]['id']){
 					chat.sendMessage("是当前用户,摄像头关联到本地： "+users[i]['id']);
@@ -59,7 +59,7 @@ package com.docker.views.user
 					}
 					videoIndex++;
 				}
-			}
+			}**/
 			
 		}
 		

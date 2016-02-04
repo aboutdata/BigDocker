@@ -3,27 +3,29 @@
 						  xmlns:s="library://ns.adobe.com/flex/spark" 
 						  xmlns:mx="library://ns.adobe.com/flex/mx" 
 			 			  xmlns:util="com.docker.ui.*"
-			  			  xmlns:view="com.docker.views.monitor.*">
-	<!-- view -->
-	<mx:Box width="200" height="140"  
+			  			  xmlns:view="com.docker.views.monitor.*"
+						  creationComplete="init()"
+						  >
+	<!-- view
+	<mx:Box width="200" height="140" name="videoRemote" 
 			backgroundColor="0x000000" 
 			borderStyle="solid" borderColor="0xD0D0D0"
 			paddingBottom="0" cornerRadius="2" click="changeVideo(1)">
 		<util:VideoContainer height="100%" width="100%" video="{ main.media.videoRemote }"/>
 	</mx:Box>
 	
-	<mx:Box width="200" height="140"
+	<mx:Box width="200" height="140" name="videoRemote1" 
 			backgroundColor="0x000000" 
 			borderStyle="solid" borderColor="0xD0D0D0"
 			paddingBottom="0" cornerRadius="2" click="changeVideo(2)">
 		<util:VideoContainer height="100%" width="100%" video="{ main.media.videoRemote1 }"/>
 	</mx:Box>
 	
-	<mx:Box width="200" height="140"
+	<mx:Box width="200" height="140" name="videoRemote2" 
 			backgroundColor="0x000000" 
 			borderStyle="solid" borderColor="0xD0D0D0"
 			paddingBottom="0" cornerRadius="2"  click="changeVideo(3)">
 			<util:VideoContainer height="100%" width="100%" video="{ main.media.videoRemote2 }"/>
-	</mx:Box>
+	</mx:Box> -->
 	
 </view:MonitorDisplayClass>
