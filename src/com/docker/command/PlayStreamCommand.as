@@ -44,7 +44,7 @@ package com.docker.command
 	    	var enableAudio : Boolean = event.enableAudio;
 			var videoIndex : int = event.videoIndex;
 			// Use Delegate to playback the NetStream.
-	      	netStreamDelegate.startPlayback( bufferTime, streamName, enableVideo, enableAudio,videoIndex);
+	      	//netStreamDelegate.startPlayback( bufferTime, streamName, enableVideo, enableAudio,videoIndex);
 		}
 				
 	}

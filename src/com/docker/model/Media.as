@@ -20,13 +20,6 @@ package com.docker.model
 		*/
 		public var nsPlay : NetStream;
 		
-		public var nsPlay1 : NetStream;
-		
-		public var nsPlay2 : NetStream;
-		
-		public var nsPlay3 : NetStream;
-		
-	
 		/**
 		* One <code>NetConnection</code> used in the application.
 		*/		
@@ -55,17 +48,10 @@ package com.docker.model
 		public var videoRemote : Video;	
 		
 		[Bindable]
-		public var videoRemote1 : Video;	
-		
-		[Bindable]
-		public var videoRemote2 : Video;	
-	
-		
-		[Bindable]
 		/**
 		 * Display output of video device.
 		 */		
-		public var videoMain : Video = videoLocal;
+		public var videoMain : Video;
 		
 		[Bindable]
 		/**

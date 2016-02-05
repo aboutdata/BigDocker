@@ -46,10 +46,6 @@ package com.docker.business
 		*/		
 		private var nsPlay : NetStream = main.media.nsPlay;
 		
-		private var nsPlay1 : NetStream = main.media.nsPlay1;
-		private var nsPlay2 : NetStream = main.media.nsPlay2;
-		private var nsPlay3 : NetStream = main.media.nsPlay3;
-		
 		/**
 		*  
 		*/		
@@ -77,74 +73,7 @@ package com.docker.business
 			// Listen and capture the NetConnection info and error events.
 			responder = res;
 		}
-		
-		/**
-		 * 
-		 * @param bufferTime
-		 * @param streamName
-		 * @param audio
-		 * @param video
-		 */				
-		public function startPlayback( bufferTime : int, 
-									   streamName : String, 
-									   audio : Boolean,
-									   video : Boolean,
-									   videoIndex : int ) : void
-		{
-			try 
-			{	switch(videoIndex){
-					case 1 :
-						nsPlay1= new NetStream( main.media.nc );
-						
-						nsPlay1.bufferTime = bufferTime;
-						nsPlay1.receiveAudio( audio );
-						nsPlay1.receiveVideo( video );
-						//nsPlay1.client = responder;
-						main.media.videoRemote = new Video( 320,240 );
-						main.media.videoRemote.attachNetStream( nsPlay1 );
-						nsPlay1.play( streamName );
-						
-						//播放第一个视频
-						startPlaybackMain(streamName);
-						break;
-					case 2 :
-						nsPlay2 = new NetStream( main.media.nc );
-						
-						nsPlay2.bufferTime = bufferTime;
-						nsPlay2.receiveAudio( audio );
-						nsPlay2.receiveVideo( video );
-						//nsPlay2.client = responder;
-						main.media.videoRemote1 = new Video( 320,240 );
-						main.media.videoRemote1.attachNetStream( nsPlay2 );
-						nsPlay2.play( streamName );
-						break;
-					case 3 :
-						nsPlay3 = new NetStream( main.media.nc );
-						
-						nsPlay3.bufferTime = bufferTime;
-						nsPlay3.receiveAudio( audio );
-						nsPlay3.receiveVideo( video );
-						//nsPlay3.client = responder;
-						main.media.videoRemote2 = new Video( 320,240 );
-						main.media.videoRemote2.attachNetStream( nsPlay3 );
-						nsPlay3.play( streamName );
-						break;
-				}
-				
-			}
-			catch( e : ArgumentError ) 
-			{
-				switch ( e.errorID ) 
-				{
-					case 2126 :
-						//
-						break;
-					default :
-					   break;
-				}
-			}
-		}
-		
+	
 		/***
 		 * 
 		 * 播放主屏幕的 视频流
@@ -153,6 +82,15 @@ package com.docker.business
 		{
 			try 
 			{
+				// Check for reconnect.
+				if ( nsPlay != null ) 
+				{
+					chat.sendMessage("startPlaybackMain:： Stop and close previous NetStream");
+					// Stop and close previous NetStream.
+					var stopStreamEvent : StopStreamEvent = new StopStreamEvent();
+					stopStreamEvent.dispatch();
+				}
+				
 				nsPlay = new NetStream( main.media.nc );
 				
 				nsPlay.addEventListener( NetStatusEvent.NET_STATUS, netStatusEvent );
@@ -190,29 +128,16 @@ package com.docker.business
 		
 		
 		/**
-		 * 
+		 * 关闭流信息 关闭主屏的视频信息
 		 */		
-		public function stopPlayback( videoIndex : int ) : void
+		public function stopPlayback() : void
 		{
-			chat.sendMessage("关闭流信息:： "+videoIndex);
-			switch(videoIndex){
-				case 1 :
-					main.media.videoRemote=null;
-					// Close the NetStream.
-					if ( nsPlay1 != null ) {nsPlay1.close();}
-					break;
-				case 2 :
-					main.media.videoRemote1=null;
-					if ( nsPlay2 != null ) {nsPlay2.close();}
-					break;
-				case 3 :
-					main.media.videoRemote2=null;
-					if ( nsPlay3 != null ) {nsPlay3.close();}
-					break;
-				default :
-					break;
+			chat.sendMessage("关闭流信息:： ");
+			main.media.videoMain=null
+			// Close the NetStream.
+			if ( nsPlay != null ) {
+				nsPlay.close();
 			}
-//			
 		}
 		
 		

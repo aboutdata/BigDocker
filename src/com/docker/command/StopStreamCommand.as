@@ -38,9 +38,7 @@ package com.docker.command
 	 	public function execute( cgEvent : CairngormEvent ) : void
 	    { 
 	    	var event : StopStreamEvent = StopStreamEvent( cgEvent );
-	    	// Use Delegate to close NetStream.
-			var videoIndex : int = event.videoIndex;
-	      	netStreamDelegate.stopPlayback(videoIndex);
+	      	netStreamDelegate.stopPlayback()
 		}
 	}
 }

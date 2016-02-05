@@ -53,18 +53,22 @@ package com.docker.views.monitor
 			}
 			
 			this.removeAllChildren();
+			
+			var mainView:Boolean=true;//进一步处理 不要包含自己视频
 			for(var i:int = 0; i < users.length; i++) {
 				var playback_streamName : String = "stream_consult_"+users[i]['id'];
 				if(uid === users[i]['id']){
 					chat.sendMessage(" refreshData是当前用户,摄像头关联到本地： "+users[i]['id']);
 				}else{
 					//默认显示第一个到主屏上
-					if(i==0){
+					if(mainView){
+						chat.sendMessage("refreshData是当前用户,摄像头关联到本地 播放第一个视频");
 						var changeVideoEvent:ChangeVideoEvent=new ChangeVideoEvent(playback_streamName);
 						changeVideoEvent.dispatch();
+						mainView =false;
 					}
 					
-					chat.sendMessage(" refreshData是当前用户,摄像头关远程： "+users[i]['id']);
+					chat.sendMessage(" refreshData是当前用户,摄像头关远程： i= "+i+"   uid "+users[i]['id']);
 					
 					var myBox:Box=new Box();
 					myBox.name=""+users[i]['id'];
